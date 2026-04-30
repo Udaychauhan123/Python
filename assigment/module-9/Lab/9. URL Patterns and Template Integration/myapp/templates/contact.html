@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+</style>
+
+<div class="contact-container">
+    <h1>Contact Us</h1>
+
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name">
+        <div class="error" id="nameError"></div>
+
+        <input type="email" id="email" placeholder="Your Email">
+        <div class="error" id="emailError"></div>
+
+        <textarea id="message" rows="4" placeholder="Your Message"></textarea>
+        <div class="error" id="msgError"></div>
+
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <div class="success" id="successMsg"></div>
+
+    <div class="info">
+        📧 doctorfinder@gmail.com <br>
+        📞 +91 98765 43210
+    </div>
+</div>
+{% endblock %}

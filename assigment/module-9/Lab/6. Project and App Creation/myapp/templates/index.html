@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Profiles</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            min-height: 100vh;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 30px;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            top: -50%;
+            left: -50%;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .card:hover::before {
+            opacity: 0.2;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+        }
+
+        .card h2 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .info {
+            margin-top: 10px;
+        }
+
+        .info p {
+            font-size: 0.95rem;
+            margin: 6px 0;
+            opacity: 0.9;
+        }
+
+        .badge {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media(max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Doctor Profiles</h1>
+
+<div class="container">
+    {% for doctor in doctors %}
+    <div class="card">
+        <h2>{{ doctor.name }}</h2>
+
+        <div class="info">
+            <p><strong>Specialization:</strong> {{ doctor.specialization }}</p>
+            <p><strong>Experience:</strong> {{ doctor.experience }} years</p>
+        </div>
+
+        <span class="badge">Available</span>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

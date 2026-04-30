@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Welcome to Doctor Finder</h1>
+    <p>Find the best doctors near you with ease and trust.</p>
+
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Search doctor...">
+    </div>
+
+    <br>
+    <a href="{% url 'profile' %}" class="btn">View Doctors</a>
+</div>
+
+<!-- FEATURES -->
+<div class="features hidden">
+    <div class="card">
+        <h3>🔍 Search Doctors</h3>
+        <p>Find specialists by category.</p>
+    </div>
+
+    <div class="card">
+        <h3>📍 Nearby Clinics</h3>
+        <p>Locate doctors quickly.</p>
+    </div>
+
+    <div class="card">
+        <h3>⭐ Trusted Reviews</h3>
+        <p>Check ratings easily.</p>
+    </div>
+</div>
+
+<!-- DOCTOR LIST -->
+<div class="doctors hidden">
+    <h2>Top Doctors</h2>
+
+    <div class="doctor-list" id="doctorList">
+        <div class="doctor">Dr. John - Cardiologist</div>
+        <div class="doctor">Dr. Smith - Dentist</div>
+        <div class="doctor">Dr. Priya - Dermatologist</div>
+    </div>
+</div>
+
+<!-- CONTACT CTA -->
+<div class="contact-banner hidden">
+    <h2>Need Help Finding a Doctor?</h2>
+    <a href="{% url 'contact' %}" class="btn">Contact Us</a>
+</div>
+
+<!-- 🔥 JavaScript -->
+<script>
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #1a2328;
+            color: white;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 8px;
+            width: 250px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>User Registration</h1>
+
+<form method="POST" onsubmit="return validateForm()">
+    {% csrf_token %}
+
+    <input type="text" id="username" name="username" placeholder="Username"><br>
+    <span class="error" id="userErr"></span><br>
+
+    <input type="email" id="email" name="email" placeholder="Email"><br>
+    <span class="error" id="emailErr"></span><br>
+
+    <input type="password" id="password" name="password" placeholder="Password"><br>
+    <span class="error" id="passErr"></span><br>
+
+    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password"><br>
+    <span class="error" id="confirmErr"></span><br>
+
+    <button type="submit">Register</button>
+</form>
+
+<script>
+function validateForm() {
+    let username = document.getElementById("username").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let confirm = document.getElementById("confirm_password").value;
+
+    let valid = true;
+
+    document.getElementById("userErr").innerHTML = "";
+    document.getElementById("emailErr").innerHTML = "";
+    document.getElementById("passErr").innerHTML = "";
+    document.getElementById("confirmErr").innerHTML = "";
+
+    if (username.length < 3) {
+        document.getElementById("userErr").innerHTML = "Username too short";
+        valid = false;
+    }
+
+    if (!email.includes("@")) {
+        document.getElementById("emailErr").innerHTML = "Invalid email";
+        valid = false;
+    }
+
+    if (password.length < 6) {
+        document.getElementById("passErr").innerHTML = "Password must be 6+ chars";
+        valid = false;
+    }
+
+    if (password !== confirm) {
+        document.getElementById("confirmErr").innerHTML = "Passwords do not match";
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
+
+</body>
+</html>

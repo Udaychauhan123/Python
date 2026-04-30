@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MVT Student List</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a2328, #2b3a42);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Heading */
+h1 {
+    margin: 30px 0;
+    color: #fff;
+    font-size: 2.3rem;
+    font-weight: 600;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 900px;
+}
+
+/* Card */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0,198,255,0.6);
+}
+
+/* Info */
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Name */
+.name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Specialization */
+.course {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Tags (experience + fees) */
+.marks {
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+/* Empty message */
+.empty {
+    text-align: center;
+    color: #ccc;
+    margin-top: 50px;
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media(max-width: 600px) {
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .marks {
+        margin-left: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<h1>Doctor data</h1>
+
+<div class="container">
+
+    {% for d in doctors %}
+    <div class="card">
+        <div class="info">
+            <div class="name">{{ d.name }}</div>
+            <div class="course">{{ d.specialization }}</div>
+        </div>
+        <div class="marks">{{ d.experience }} experience</div>
+        <div class="marks">{{ d.fees }} fees</div>
+    </div>
+    {% empty %}
+    <div class="empty">No doctors found</div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

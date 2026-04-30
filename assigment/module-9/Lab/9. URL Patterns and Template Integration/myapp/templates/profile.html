@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+</style>
+
+<!-- SEARCH -->
+<div class="search-box">
+    <input type="text" id="search" placeholder="Search doctor...">
+</div>
+
+<!-- DOCTOR LIST -->
+<div class="profile-container" id="doctorList">
+
+    <!-- Doctor 1 -->
+    <div class="profile-card doctor">
+        <img src="https://media.easy-peasy.ai/4e600a82-8aac-4abb-95cd-f87cc9125a0f/18ea5802-d34e-4fbb-91e2-99baebb2eac9_medium.webp" class="profile-img">
+        <h3 class="name">Dr. John</h3>
+        <p class="spec">Cardiologist</p>
+        <p>Experience: 10 Years</p>
+
+        <div class="stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+        </div>
+
+        <button class="btn">Book</button>
+    </div>
+
+    <!-- Doctor 2 -->
+    <div class="profile-card doctor">
+        <img src="https://media.easy-peasy.ai/6e72b0e6-d304-4c36-9787-b5aeae603b4d/8530b056-ad17-4ac1-9671-dfba73309cfa_medium.webp" class="profile-img">
+        <h3 class="name">Dr. Priya</h3>
+        <p class="spec">Dermatologist</p>
+        <p>Experience: 7 Years</p>
+
+        <div class="stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+        </div>
+
+        <button class="btn">Book</button>
+    </div>
+
+    <!-- Doctor 3 -->
+    <div class="profile-card doctor">
+        <img src="https://media.easy-peasy.ai/661d690a-0a52-4c3a-9278-db312d1ef042/f53bbf53-13d7-4d26-a470-6b468fc9045a_thumb.webp" class="profile-img">
+        <h3 class="name">Dr. Smith</h3>
+        <p class="spec">Dentist</p>
+        <p>Experience: 5 Years</p>
+
+        <div class="stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+        </div>
+
+        <button class="btn">Book</button>
+    </div>
+
+</div>
+
+<script>
+
+// 🎬 Load animation
+window.onload = () => {
+    document.querySelectorAll(".profile-card").forEach((card, i) => {
+        setTimeout(() => {
+            card.classList.add("show");
+        }, i * 200);
+    });
+};
+
+// ⭐ Rating (each card separate)
+document.querySelectorAll(".stars").forEach(starGroup => {
+    const stars = starGroup.querySelectorAll(".star");
+
+    stars.forEach((star, index) => {
+        star.addEventListener("click", () => {
+            stars.forEach((s, i) => {
+                s.classList.toggle("active", i <= index);
+            });
+        });
+    });
+});
+
+// 🔍 Search filter
+document.getElementById("search").addEventListener("keyup", function() {
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".doctor").forEach(doc => {
+        let name = doc.querySelector(".name").innerText.toLowerCase();
+        let spec = doc.querySelector(".spec").innerText.toLowerCase();
+
+        if (name.includes(value) || spec.includes(value)) {
+            doc.style.display = "block";
+        } else {
+            doc.style.display = "none";
+        }
+    });
+});
+
+// 🎯 Booking button
+document.querySelectorAll(".btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+        this.innerText = "Booking...";
+        setTimeout(() => {
+            this.innerText = "Booked ✓";
+        }, 800);
+    });
+});
+
+</script>
+
+{% endblock %}

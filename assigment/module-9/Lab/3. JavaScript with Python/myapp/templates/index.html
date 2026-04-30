@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Registration</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+<form name="patientForm" method="POST" onsubmit="return validateForm()">
+    {% csrf_token %}
+
+    <h2>Patient Registration</h2>
+
+    <input type="text" name="name" placeholder="Enter Name">
+    <div id="nameError" class="error"></div>
+
+    <input type="number" name="age" placeholder="Enter Age">
+    <div id="ageError" class="error"></div>
+
+    <input type="text" name="email" placeholder="Enter Email">
+    <div id="emailError" class="error"></div>
+
+    <button type="submit">Register</button>
+
+</form>
+<script src="static/js/script.js"></script>
+</body>
+</html>
